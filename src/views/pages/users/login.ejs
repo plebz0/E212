@@ -1,0 +1,17 @@
+<!-- find one -->
+<%- include('../../partials/header') %>
+<div class="container">
+    <h2>Login</h2>
+    <form action="/users/login" method="POST">
+        <div >
+            <label for="username">Nazwa użytkownika:</label>
+            <input type="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Hasło:</label>
+            <input type="password"  name="password" required>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+</div>
+<%- include('../../partials/footer') %>

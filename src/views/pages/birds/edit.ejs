@@ -1,0 +1,20 @@
+<%- include('../../partials/header') %>
+
+<h2>Dodaj</h2>
+<form action="/birds/<%= bird._id%>/edit" method="POST">
+    <input type="text" name="name" placeholder="Nazwa ptaka" required><br>
+    <input type="text" name="overallSize", placeholder="Ogólna wielkosć" required> <br>
+    <input type="number" name="spanOfWings" placeholder ="Rozpiętość skrzydeł" required>
+    <select name="formOfMovement" multiple required>
+        <option value="Pływanie">Pływanie</option>
+        <option value="Chodzenie">Chodzenie</option>
+        <option value="Latanie">Latanie</option>
+    </select> <br>
+     <select name="diet" required>
+        <option value="Roślinożerca">Roślinożerca</option>
+        <option value="Mięsożerca">Mięsożerca</option>
+        <option value="Wszystkożerca">Wszystkożerca</option>
+    </select> <br>
+    <button type="submit">Zapisz</button>
+</form>
+<%- include('../../partials/footer') %>
