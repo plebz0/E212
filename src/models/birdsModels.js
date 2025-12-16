@@ -12,9 +12,9 @@ async function getBirdById(id) {
 }
 
 
-async function addBird(name, spanOfWings, formOfMovement, overallSize, diet ) {
+async function addBird(name, spanOfWings, formOfMovement, overallSize, diet, addedBy ) {
     const db = getDB();
-    await db.collection('birds').insertOne({ name, spanOfWings, formOfMovement, overallSize, diet, createdAt: new Date() });
+    await db.collection('birds').insertOne({ name, spanOfWings, formOfMovement, overallSize, diet, addedBy, createdAt: new Date() });
 }
 
 async function updateBird(id ,name, spanOfWings, formOfMovement, overallSize, diet) {

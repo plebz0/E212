@@ -2,6 +2,11 @@
 <%- include('../../partials/header') %>
 <div class="container">
     <h2>Login</h2>
+    <% if(currentUser) { %>
+        <p>Witaj, <%= currentUser.username %>!</p>
+    <% } else { %>
+        <p>Nie jesteś zalogowany.</p>
+    <% } %> 
     <form action="/users/login" method="POST">
         <div >
             <label for="username">Nazwa użytkownika:</label>

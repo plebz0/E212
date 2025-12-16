@@ -9,12 +9,14 @@
         <option value="Pływanie">Pływanie</option>
         <option value="Chodzenie">Chodzenie</option>
         <option value="Latanie">Latanie</option>
-    </select> <br>
+    </select> <br><br>
      <select name="diet" required>
         <option value="Roślinożerca">Roślinożerca</option>
         <option value="Mięsożerca">Mięsożerca</option>
         <option value="Wszystkożerca">Wszystkożerca</option>
     </select> <br>
+    <input type="text" name="addedBy" readonly value=" <% if(currentUser){ %> <%= currentUser.username %> <%} else { %> guest <%}%> "> 
+        <br>
     <button type="submit">Dodaj</button>
 </form>
 <%- include('../../partials/footer') %>

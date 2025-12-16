@@ -1,5 +1,6 @@
 
 const birdsModel = require('../models/birdsModels');
+const state = require('../state');
 
 async function getAll(req, res) {
     const { name } = req.query || "";
@@ -13,14 +14,13 @@ async function viewBird(req,res) {
      res.render('pages/birds/view', { bird });
 }
 
-function getNewBird(req, res){
-    res.render('pages/birds/new');
+async function getNewBird(req, res){
+    res.render('pages/birds/new', {currentUser: await state.getCurrentUser()});
 }
 
 async function postNew(req, res) {
-    const { name, spanOfWings, formOfMovement, overallSize, diet } = req.body;
-    await birdsModel.addBird(name, spanOfWings, formOfMovement, overallSize, diet
-    );
+    const { name, spanOfWings, formOfMovement, overallSize, diet, addedBy } = req.body;
+    await birdsModel.addBird(name, spanOfWings, formOfMovement, overallSize, diet, addedBy);
     res.redirect('/');
 }
 
