@@ -7,7 +7,7 @@
     "start": "node src/server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Dawid Kubik",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^6.0.0",

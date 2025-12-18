@@ -1,9 +1,27 @@
 const { ObjectId } = require('mongodb');
 const { getDB } = require('../data/connection');
 
-async function getAllBirds(name, overallSize){
+function isPositiveNumber(value) {
+  return value !== '' && !isNaN(value) && isFinite(value) && Number(value) > 0;
+}
+
+async function getAllBirds(name, diet){
 const db = getDB();
+if(diet === "Wyszystko"){
+    diet = null;
+}
+if(!name && !diet){
     return await db.collection('birds').find().sort({createdAt: -1}).toArray();
+}
+if(name && !diet){
+    return await db.collection('birds').find({name: name}).sort({createdAt: -1}).toArray();
+}
+if(!name && diet){
+    return await db.collection('birds').find({diet: diet}).sort({createdAt: -1}).toArray();
+}
+if(name && diet){
+    return await db.collection('birds').find({name: name, diet: diet}).sort({createdAt: -1}).toArray();
+}
 }
 
 async function getBirdById(id) {
@@ -13,8 +31,13 @@ async function getBirdById(id) {
 
 
 async function addBird(name, spanOfWings, formOfMovement, overallSize, diet, addedBy ) {
-    const db = getDB();
-    await db.collection('birds').insertOne({ name, spanOfWings, formOfMovement, overallSize, diet, addedBy, createdAt: new Date() });
+    if(!isPositiveNumber(spanOfWings)  || !isPositiveNumber(overallSize)) {
+        throw new Error('Rozpiętość skrzydeł i ogólna wielkość muszą być dodatnimi liczbami.');
+    }
+    else{
+        const db = getDB();
+        await db.collection('birds').insertOne({ name, spanOfWings, formOfMovement, overallSize, diet, addedBy, createdAt: new Date() });
+    }
 }
 
 async function updateBird(id ,name, spanOfWings, formOfMovement, overallSize, diet) {

@@ -3,7 +3,7 @@ const { getDB } = require('../data/connection');
 
 async function addUser(username, password ) {
     const db = getDB();
-    await db.collection('users').insertOne({ username, password });
+    await db.collection('users').insertOne({username,password});
     
 }
 
@@ -12,4 +12,9 @@ async function findUser(username, password ) {
     return await db.collection('users').findOne({username , password});   
 }
 
-module.exports = {addUser, findUser};
+async function findUserByUsername(username) {
+    const db = getDB();
+    return await db.collection('users').findOne({ username });   
+}
+
+module.exports = {addUser, findUserByUsername, findUser};

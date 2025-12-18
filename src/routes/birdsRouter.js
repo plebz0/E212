@@ -6,7 +6,7 @@ const usersController = require('../controllers/usersControllers');
 router.get('/', birdsController.getAll);
 router.get('/birds/:id/view', birdsController.viewBird);
 router.get('/birds/new', birdsController.getNewBird);
-router.post('/birds/new', birdsController.postNew);
+router.post('/birds/new', birdsController.postNewBird);
 router.get('/birds/:id/edit', birdsController.getEditBird);
 router.post('/birds/:id/edit', birdsController.postEdit);
 router.post('/birds/:id/delete', birdsController.deleteBird);

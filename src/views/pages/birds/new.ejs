@@ -2,20 +2,27 @@
 
 <h2>Dodaj</h2>
 <form action="/birds/new" method="POST">
+    <label for="name">Nazwa ptaka:</label><br>
     <input type="text" name="name" placeholder="Nazwa ptaka" required><br>
-    <input type="text" name="overallSize", placeholder="Ogólna wielkosć (W cm)" required> <br>
+    <label for="overallSize">Ogólna wielkość (W cm):</label>
+    <input type="number" name="overallSize", placeholder="Ogólna wielkość (W cm)" required> <br>
+    <label for="spanOfWings">Rozpiętość skrzydeł (W cm):</label>
     <input type="number" name="spanOfWings" placeholder ="Rozpiętość skrzydeł(W cm)" required>
+    <br>
+    <label for="formOfMovement">Forma poruszania się: (Przytrzymać ctrl aby wybrać więcej niż jedną opcję)</label><br>
     <select name="formOfMovement" multiple required>
         <option value="Pływanie">Pływanie</option>
         <option value="Chodzenie">Chodzenie</option>
         <option value="Latanie">Latanie</option>
     </select> <br><br>
+    <label for="diet">Dieta:</label>
      <select name="diet" required>
         <option value="Roślinożerca">Roślinożerca</option>
         <option value="Mięsożerca">Mięsożerca</option>
         <option value="Wszystkożerca">Wszystkożerca</option>
     </select> <br>
-    <input type="text" name="addedBy" readonly value=" <% if(currentUser){ %> <%= currentUser.username %> <%} else { %> guest <%}%> "> 
+    <label for="addedBy">Dodany przez:</label>
+    <input type="text" name="addedBy" readonly value="<% if(currentUser){ %><%= currentUser.username %><% } else { %>guest<% } %>"> 
         <br>
     <button type="submit">Dodaj</button>
 </form>
