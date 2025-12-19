@@ -10,6 +10,18 @@ Projekt aplikacji webowej umożliwiającej dodawanie, edycję, przeglądanie i u
 
 ---
 
+## Wymagania
+
+- **Node.js** (wersja **14** lub nowsza).
+- **npm** (Node Package Manager) — do instalacji zależności (`npm install`).
+- **MongoDB** — lokalna instancja (domyślnie `mongodb://localhost:27017`) lub **MongoDB Atlas**.
+- **Zmienne środowiskowe** (opcjonalne):
+  - `MONGODB_URI` — URI do bazy MongoDB (jeśli nie ustawione, używany jest `mongodb://localhost:27017`).
+  - `PORT` — port serwera (domyślnie `3000`).
+- **Git** (opcjonalnie) — do klonowania repozytorium.
+
+---
+
 ## Funkcjonalności
 
 - Rejestracja i logowanie użytkowników (hasła haszowane przy użyciu `bcrypt`)
@@ -35,7 +47,7 @@ cd Bird_Project
 npm install
 ```
 
-3. Upewnij się, że MongoDB działa (domyślnie: `mongodb://localhost:27017`, baza `birds`). Jeśli chcesz używać zmiennej środowiskowej, dodaj `MONGODB_URI` do pliku `.env` i skonfiguruj `src/data/connection.js`.
+3. Upewnij się, że MongoDB działa (domyślnie: `mongodb://localhost:27017`, baza `birds`). Spójrz plik docker.txt
 
 4. Uruchom aplikację:
 
@@ -43,7 +55,7 @@ npm install
 npm start
 ```
 
-Aplikacja będzie dostępna pod adresem `http://localhost:3000`.
+Aplikacja będzie dostępna pod adresem `http://localhost:3000` (Po wpisaniu npm start w trminalu pojawi się wiadomość z `http://localhost:3000` wtedy możesz przytrzymać ctrl i kliknąć w link).
 
 ---
 
@@ -51,7 +63,7 @@ Aplikacja będzie dostępna pod adresem `http://localhost:3000`.
 
 | Metoda | Endpoint                  | Opis krótkiego działania |
 | ------ | ------------------------ | --------------------------------------------------------------- |
-| GET    | `/`                      | Strona główna — lista ptaków (opcjonalne query: `name`, `diet`) |
+| GET    | `/`                      | Strona główna — lista ptaków (filtrowanie po: `name`, `diet`)   |
 | GET    | `/birds/new`             | Formularz dodawania nowego ptaka (widok)                        |
 | POST   | `/birds/new`             | Zapis nowego ptaka (walidacja pól)                              |
 | GET    | `/birds/:id/view`        | Widok szczegółów ptaka                                          |
@@ -61,7 +73,7 @@ Aplikacja będzie dostępna pod adresem `http://localhost:3000`.
 | GET    | `/users/register`        | Formularz rejestracji użytkownika                               |
 | POST   | `/users/register`        | Rejestracja użytkownika (walidacja hasła, redirect do login)    |
 | GET    | `/users/login`           | Formularz logowania                                             |
-| POST   | `/users/login`           | Logowanie (porównanie hasła z hashem, redirect do `/`)          |
+| POST   | `/users/login`           | Logowanie (porównanie hasła z hashem)                           |
 
 ---
 
@@ -93,6 +105,8 @@ src/
 │   └── usersModels.js
 ├── data/
 │   └── connection.js
+├── resources/
+│   └── birdsRouter.js
 ├── views/
 │   ├── pages/
 │   │   ├── birds/

@@ -13,7 +13,7 @@ body{
 .container{
     max-width:900px;
     margin:20px auto;
-    padding:0 16px
+    padding:16px
 }
 
 header{
@@ -31,10 +31,6 @@ nav a{
     margin-left:12px;color:#111;text-decoration:none;font-weight:600
 }
 
-main.card{
-    padding:16px
-}
-
 ul{
     list-style:none
 }
@@ -49,6 +45,25 @@ li b a{
     color:#111;
     text-decoration:none
 }
+
+.bird-info{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+
+.overall-size{
+    color:#666;
+    font-size:13px;
+    margin-left:6px;
+}
+
 
 small{
     color:#666;
@@ -78,17 +93,9 @@ button{
     border-radius:4px;
     cursor:pointer
 }
-button.secondary{
-    background:#fff;
-    color:#111;
-    border:1px solid #ccc
-}
-button.danger{
-    background:#d9534f
-}
 
 .inline-form{
-    display:inline
+    display:inline-block
 }
 
 .form-actions{
@@ -105,7 +112,8 @@ footer{
     margin-top:20px
 }
 
-.badge{display:inline-block;
+.badge{
+    display:inline-block;
     padding:2px 6px;
     border-radius:4px;
     background:#eee;
@@ -116,7 +124,8 @@ footer{
     margin-top:8px
 }
 .mb-8{
-    margin-bottom:8px}
+    margin-bottom:8px
+}
 
 .text-muted{
     color:#666
