@@ -64,7 +64,6 @@ li b a{
     margin-left:6px;
 }
 
-
 small{
     color:#666;
     font-size:13px;
@@ -98,12 +97,6 @@ button{
     display:inline-block
 }
 
-.form-actions{
-    display:flex;
-    gap:8px;
-    margin-top:12px
-}
-
 footer{
     text-align:center;
     color:#666;
@@ -112,21 +105,4 @@ footer{
     margin-top:20px
 }
 
-.badge{
-    display:inline-block;
-    padding:2px 6px;
-    border-radius:4px;
-    background:#eee;
-    color:#333;
-    font-size:12px}
 
-.mt-8{
-    margin-top:8px
-}
-.mb-8{
-    margin-bottom:8px
-}
-
-.text-muted{
-    color:#666
-}

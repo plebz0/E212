@@ -1,12 +1,10 @@
 # Bird Project
 
-Projekt aplikacji webowej do zarządzania opisami ptaków z użyciem Node.js, Express i MongoDB. Widoki renderowane są po stronie serwera przy użyciu EJS.
-
 ---
 
 ## Opis projektu
 
-Projekt aplikacji webowej umożliwiającej dodawanie, edycję, przeglądanie i usuwanie opisów ptaków oraz podstawową obsługę użytkowników (rejestracja i logowanie). Aplikacja korzysta z Node.js, Express oraz MongoDB, a widoki są renderowane za pomocą EJS.
+Projekt aplikacji webowej umożliwiającej dodawanie, edycję, przeglądanie i usuwanie opisów ptaków oraz podstawową obsługę użytkowników (rejestracja i logowanie). Aplikacja korzysta z Node.js, Express oraz MongoDB, a widoki są renderowane za pomocą EJS. Apliokacja również korzysta ze stylowania css
 
 ---
 
