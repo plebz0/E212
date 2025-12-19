@@ -27,6 +27,7 @@ Projekt aplikacji webowej umożliwiającej dodawanie, edycję, przeglądanie i u
 - Edycja i usuwanie istniejących wpisów
 - Przeglądanie szczegółów pojedynczego wpisu
 - Filtrowanie listy ptaków (parametry zapytania `name`, `diet`)
+- Sortowanie listy ptaków (parametry zapytania `createdAt`, `overallSize`)
 
 ---
 
@@ -61,7 +62,7 @@ Aplikacja będzie dostępna pod adresem `http://localhost:3000` (Po wpisaniu npm
 
 | Metoda | Endpoint                  | Opis krótkiego działania |
 | ------ | ------------------------ | --------------------------------------------------------------- |
-| GET    | `/`                      | Strona główna — lista ptaków (filtrowanie po: `name`, `diet`)   |
+| GET    | `/`                      | Strona główna — lista ptaków (filtrowanie i sortowanie)         |
 | GET    | `/birds/new`             | Formularz dodawania nowego ptaka (widok)                        |
 | POST   | `/birds/new`             | Zapis nowego ptaka (walidacja pól)                              |
 | GET    | `/birds/:id/view`        | Widok szczegółów ptaka                                          |

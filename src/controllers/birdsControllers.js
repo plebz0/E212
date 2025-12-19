@@ -3,10 +3,9 @@ const birdsModel = require('../models/birdsModels');
 const state = require('../state');
 
 async function getAll(req, res) {
-    const { name } = req.query || "";
-    const { diet } = req.query || "";
-    const birds = await birdsModel.getAllBirds(name, diet);
-    res.status(200).render('pages/index', { birds, currentUser: await state.getCurrentUser() });
+    const { name = '', diet = '', sort = 'createdAt', order = 'desc' } = req.query || {};
+    const birds = await birdsModel.getAllBirds(name, diet, sort, order);
+    res.status(200).render('pages/index', { birds, currentUser: await state.getCurrentUser(), name, diet, sort, order });
 }
 
 async function viewBird(req,res) {

@@ -34,10 +34,23 @@
     <input type="text" name="name" placeholder="Nazwa ptaka">
      <label for="diet">Dieta:</label>
      <select name="diet" required>
-        <option value="Wyszystko">Wyszystko</option>
+        <option value="Wyszystko" >Wyszystko</option>
         <option value="Roślinożerca">Roślinożerca</option>
         <option value="Mięsożerca">Mięsożerca</option>
         <option value="Wszystkożerca">Wszystkożerca</option>
     </select> <br>
+
+    <label for="sort">Sortuj według:</label>
+    <select name="sort">
+        <option value="createdAt">Data dodania</option>
+        <option value="overallSize">Ogólna wielkość</option>
+    </select>
+    <select name="order">
+        <option value="desc">Malejąco</option>
+        <option value="asc">Rosnąco</option>
+    </select>
+    <br>
+
     <button type="submit">Filtruj</button>
+</form>
 <%- include('../partials/footer') %>

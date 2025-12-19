@@ -5,24 +5,39 @@ function isPositiveNumber(value) {
   return value !== '' && !isNaN(value) && isFinite(value) && Number(value) > 0;
 }
 
-async function getAllBirds(name, diet){
-const db = getDB();
-if(diet === "Wyszystko"){
+async function getAllBirds(name, diet, sort = 'createdAt', order = 'desc'){
+  const db = getDB();
+
+  if(diet === "Wyszystko"){
     diet = null;
+  }
+  
+    const query = {};
+
+  if(name){
+    query.name = name;
+  } 
+  if(diet){
+    query.diet = diet;
+  } 
+
+  let sortObj = { createdAt: -1 };
+  if(sort === 'createdAt' && order === 'asc') {
+    sortObj = { createdAt: 1 };
+  } 
+  else if(sort === 'createdAt' && order === 'desc') {
+    sortObj = { createdAt: -1 };
+  }
+  else if(sort === 'overallSize' && order === 'asc') {
+    sortObj = { overallSize: 1 };
+  }
+  else if(sort === 'overallSize' && order === 'desc') {
+    sortObj = { overallSize: -1 };
+  }
+
+  return await db.collection('birds').find(query).sort(sortObj).toArray();
 }
-if(!name && !diet){
-    return await db.collection('birds').find().sort({createdAt: -1}).toArray();
-}
-if(name && !diet){
-    return await db.collection('birds').find({name: name}).sort({createdAt: -1}).toArray();
-}
-if(!name && diet){
-    return await db.collection('birds').find({diet: diet}).sort({createdAt: -1}).toArray();
-}
-if(name && diet){
-    return await db.collection('birds').find({name: name, diet: diet}).sort({createdAt: -1}).toArray();
-}
-}
+
 
 async function getBirdById(id) {
     const db = getDB();
