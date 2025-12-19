@@ -1,4 +1,3 @@
-
 const usersModel = require('../models/usersModels');
 const state = require('../state');
 const bcrypt = require('bcrypt');
@@ -7,6 +6,10 @@ const bcrypt = require('bcrypt');
 function isValidPassword(password) {
     const regex = /^(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
     return regex.test(password);
+}
+function isValidUsername(username) {
+  const regex = /^(?=(?:.*[A-Za-z]){2,}).{3,}$/;
+  return regex.test(username);
 }
 
 function hashPassword(password){
@@ -18,16 +21,21 @@ function hashPassword(password){
 }
 
 function getNewUser(req, res){
-    res.render('pages/users/register');
+    res.status(200).render('pages/users/register');
 }
 async function getLoginUser(req, res){
-    res.render('pages/users/login', {currentUser:await state.getCurrentUser()});
+    res.status(200).render('pages/users/login', { currentUser: await state.getCurrentUser()});
 }
 
 
 
 async function registerUser(req, res) {
     const { username, password } = req.body;
+    if(await !isValidUsername(username)){
+        return  res.status(400).render('pages/error', {
+            errors: ['Nazwa użytkownika musi mieć co najmniej 3 znaki i zawierać przynajmniej 2 litery!']
+        });
+    }
     if(await !isValidPassword(password)){
         return res.status(400).render('pages/error', {
             errors: ['Hasło musi mieć co najmniej 8 znaków i zawierać przynajmniej jedną cyfrę!']
@@ -40,7 +48,7 @@ async function registerUser(req, res) {
         });
     }
     await usersModel.addUser(username, passwordHash);
-    res.redirect('/users/login');
+    res.status(302).redirect('/users/login');
 }
 
 async function verifyPassword(password, hashedPassword) {
@@ -54,10 +62,10 @@ async function loginUser(req, res){
     console.log(user);
     if(user && await verifyPassword(password, user.password)){
         state.setCurrentUser(user);
-        res.redirect('/');
+        res.status(302).redirect('/');
     }
     else{
-        res.redirect('/users/login');
+        res.status(302).redirect('/users/login');
     }
     
 }

@@ -1,6 +1,3 @@
-Docker Command: docker run -d --name birds -p 27017:27017 mongo:6.0
-MongoDB_URL= 'mongodb://localhost:27017';
-
 Wymagania:
 Zainstalowany Docker lub Docker Desktop
 Wolny port 27017 na maszynie 
@@ -10,41 +7,38 @@ W terminalu wpisz:
 docker run -d --name birds -p 27017:27017 mongo:6.0
 Opis parametrów:
 
--d
-Uruchamia kontener w tle (tryb detached)
 
---name birds
-Nadaje kontenerowi nazwę „birds”
+Dane połączenia do bazy danych i porty:
 
--p 27017:27017
-Mapowanie portów:
-port 27017 na hoście -> port 27017 w kontenerze
-
-mongo:6.0
-Obraz MongoDB w wersji 6.0
-
-Dane połączenia do bazy danych:
-
+Dane:
 Host: localhost
 Port: 27017
+Nazwa kontenera birds (--name birds)
 Nazwa bazy danych: birds
 Login: brak
 Hasło: brak
+Wersja MongoDB: 6.0
+Connection String: mongodb://localhost:27017
+
+Porty:
+Port lokalny: 27017
+Port Docker: 27017
+Mapowanie: -p 27017:27017:
+ port lewy(27017) - port na hoście
+ port prawy(27017) - port wewnątrz kontenera docker
 
 Przykładowy adres połączenia używany w aplikacji:
 
 MongoDB_URL = 'mongodb://localhost:27017'
 
 Sprawdzenie, czy kontener działa:
-
 docker ps
 
 Jeżeli na liście widoczny jest kontener o nazwie „birds”, oznacza to, że MongoDB działa poprawnie.
+Aplikacja po połączeniu się z bazą danych birds stworzy resztę sama. 
 
 Zatrzymanie kontenera:
-
 docker stop birds
 
 Usunięcie kontenera:
-
 docker rm birds
