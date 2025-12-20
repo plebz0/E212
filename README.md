@@ -73,6 +73,7 @@ Aplikacja będzie dostępna pod adresem `http://localhost:3000` (Po wpisaniu npm
 | POST   | `/users/register`        | Rejestracja użytkownika (walidacja hasła, redirect do login)    |
 | GET    | `/users/login`           | Formularz logowania                                             |
 | POST   | `/users/login`           | Logowanie (porównanie hasła z hashem)                           |
+| POST   | `/users/logout`          | Wylogowanie                                                     |
 
 ---
 

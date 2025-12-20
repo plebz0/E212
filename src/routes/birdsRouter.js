@@ -14,5 +14,6 @@ router.get('/users/register', usersController.getNewUser);
 router.post('/users/register', usersController.registerUser);
 router.get('/users/login', usersController.getLoginUser);
 router.post('/users/login', usersController.loginUser);
+router.post('/users/logout', usersController.logoutUser);
 
 module.exports = router;

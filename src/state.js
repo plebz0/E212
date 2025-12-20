@@ -5,7 +5,4 @@ module.exports = {
   setCurrentUser: (user) => {
     currentUser = user;
   },
-  logoutCurrentUser: () => {
-    currentUser = null;
-  }
 };  

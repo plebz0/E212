@@ -3,6 +3,9 @@
 <h1>Witamy na stronie ptaków</h1>
 <% if(currentUser) { %>
         <p>Witaj, <%= currentUser.username %>!</p>
+        <form action="/users/logout" method="POST" style="display:inline">
+            <button type="submit">Wyloguj</button>
+        </form>
     <% } else { %>
         <p>Nie jesteś zalogowany.</p>
     <% } %> 

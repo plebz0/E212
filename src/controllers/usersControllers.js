@@ -70,4 +70,9 @@ async function loginUser(req, res){
     
 }
 
-module.exports = { getNewUser, registerUser, loginUser, getLoginUser};
+async function logoutUser(req, res){
+    state.setCurrentUser(null);
+    res.status(302).redirect('/');
+}
+
+module.exports = { getNewUser, registerUser, loginUser, getLoginUser, logoutUser};
